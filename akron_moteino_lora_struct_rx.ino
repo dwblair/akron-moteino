@@ -118,10 +118,9 @@ void loop()
   lux = theData.lux;
   batt = theData.batt;
 
-  //Serial.print("lux=");
-  Serial.println(temp);
-  //Serial.print(",");
-  //Serial.println(lux);
+  Serial.print(temp);
+  Serial.print(",");
+  Serial.println(lux);
 
   
       /*
