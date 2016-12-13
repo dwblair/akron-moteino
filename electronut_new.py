@@ -48,7 +48,8 @@ class AnalogPlot:
       try:
           line = self.ser.readline()
 	  a=line.split(",")
-          if len(a)==2 and len(a[0])<10:
+
+          if len(a)==2 and len(a[0])<10 and is_number(a[0]) and is_number(a[1]):
               data = [float(val) for val in a]
               self.add(data)
               a0.set_data(range(self.maxLen), self.ax)
@@ -65,6 +66,14 @@ class AnalogPlot:
       self.ser.close()    
 
 # main() function
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
 def main():
   # create parser
   parser = argparse.ArgumentParser(description="LDR serial")
