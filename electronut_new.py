@@ -15,7 +15,9 @@ from collections import deque
 import matplotlib.pyplot as plt 
 import matplotlib.animation as animation
 
-    
+ymax = 40
+
+
 # plot class
 class AnalogPlot:
   # constr
@@ -84,9 +86,12 @@ def main():
 
   # set up animation
   fig = plt.figure()
-  ax = plt.axes(xlim=(0, 100), ylim=(0, 1023))
-  a0, = ax.plot([], [])
-  a1, = ax.plot([], [])
+  ax = plt.axes(xlim=(0, 100), ylim=(0, ymax))
+  a0, = ax.plot([], [],'b-o',markersize=3)
+  a1, = ax.plot([], [],'g-+',markersize=3)
+  
+  # plot horizontal line
+  ax.plot((0, 100), (30, 30), 'r--')
   anim = animation.FuncAnimation(fig, analogPlot.update, 
                                  fargs=(a0, a1), 
                                  interval=50)
